@@ -28,18 +28,18 @@ class MainActivity : YcBaseActivityPlus<ActivityMainBinding>(ActivityMainBinding
             intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.yc.plugin2.Plugin2Activity")
             startActivity(intent)
         }
-        start21.setOnClickListener {
-            val intent = Intent(this@MainActivity, PluginLoadActivity::class.java)
-            intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, Constant.PART_KEY_PLUGIN_21)
-            intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.hc.pluginlabour.ui.auth.LoginActivity")
-            startActivity(intent)
-        }
-        start22.setOnClickListener {
-            val intent = Intent(this@MainActivity, PluginLoadActivity::class.java)
-            intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, Constant.PART_KEY_PLUGIN_22)
-            intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.hcc.plugindust.ui.auth.LoginActivity")
-            startActivity(intent)
-        }
+//        start21.setOnClickListener {
+//            val intent = Intent(this@MainActivity, PluginLoadActivity::class.java)
+//            intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, Constant.PART_KEY_PLUGIN_21)
+//            intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.hc.pluginlabour.ui.auth.LoginActivity")
+//            startActivity(intent)
+//        }
+//        start22.setOnClickListener {
+//            val intent = Intent(this@MainActivity, PluginLoadActivity::class.java)
+//            intent.putExtra(Constant.KEY_PLUGIN_PART_KEY, Constant.PART_KEY_PLUGIN_22)
+//            intent.putExtra(Constant.KEY_ACTIVITY_CLASSNAME, "com.hcc.plugindust.ui.auth.LoginActivity")
+//            startActivity(intent)
+//        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)

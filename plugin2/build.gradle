@@ -46,7 +46,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'com.github.ychxx:ShadowJetpack:0.99998'
+//    implementation 'com.github.ychxx:ShadowJetpack:0.99998'
     //Shadow Transform后业务代码会有一部分实际引用runtime中的类
     //如果不以compileOnly方式依赖，会导致其他Transform或者Proguard找不到这些类
     compileOnly 'com.tencent.shadow.core:runtime-debug'
@@ -92,7 +92,6 @@ shadow {
         }
         loaderApkProjectPath = 'plugin-loader'
         runtimeApkProjectPath = 'plugin-runtime'
-        uuid = '012345678901'
         version = 1
         compactVersion = [1, 2, 3]
         uuidNickName = "1.1.1"

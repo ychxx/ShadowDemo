@@ -11,24 +11,24 @@
         android:id="@+id/start11"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:text="合并启动插件1" />
+        android:text="启动插件a" />
 
     <Button
         android:id="@+id/start12"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:text="合并启动插件2" />
+        android:text="启动插件b" />
 
-    <Button
-        android:id="@+id/start21"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:text="解压复制启动插件1" />
+<!--    <Button-->
+<!--        android:id="@+id/start21"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="解压复制启动插件1" />-->
 
-    <Button
-        android:id="@+id/start22"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:text="解压复制启动插件2" />
+<!--    <Button-->
+<!--        android:id="@+id/start22"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:text="解压复制启动插件2" />-->
 </LinearLayout>
