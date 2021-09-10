@@ -1,0 +1,12 @@
+rootProject.name = "ShadowDemo"
+include ':app'
+includeBuild 'projects/sdk/coding'
+includeBuild 'projects/sdk/core'
+includeBuild 'projects/sdk/dynamic'
+include ':plugin1'
+include ':plugin2'
+include ':sample-constant'
+include ':plugin-loader'
+include ':plugin-runtime'
+include ':plugin-manager'
+include ':pluginmerge'

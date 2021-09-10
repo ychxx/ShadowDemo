@@ -1,0 +1,100 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "$appId"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.github.ychxx:ShadowJetpack:0.99998'
+    //Shadow Transform后业务代码会有一部分实际引用runtime中的类
+    //如果不以compileOnly方式依赖，会导致其他Transform或者Proguard找不到这些类
+    compileOnly 'com.tencent.shadow.core:runtime-debug'
+}
+apply plugin: 'com.tencent.shadow.plugin'
+
+shadow {
+    transform {
+//        useHostContext = ['abc']
+    }
+
+    packagePlugin {
+        pluginTypes {
+            debug {
+                loaderApkConfig = new Tuple2('plugin-loader-debug.apk', ':plugin-loader:assembleDebug')
+                runtimeApkConfig = new Tuple2('plugin-runtime-debug.apk', ':plugin-runtime:assembleDebug')
+                pluginApks {
+                    pluginApk1 {
+                        businessName = 'plugin2-app'
+                        partKey = 'plugin2-app'
+                        buildTask = ':plugin2:assembleDebug'
+                        apkName = 'plugin2-debug.apk'
+                        apkPath = 'plugin2/build/outputs/apk/debug/plugin2-debug.apk'
+                        hostWhiteList = []
+                    }
+                }
+            }
+
+            release {
+                loaderApkConfig = new Tuple2('plugin-loader-release-unsigned.apk', ':plugin-loader:assembleRelease')
+                runtimeApkConfig = new Tuple2('plugin-runtime-release-unsigned.apk', ':plugin-runtime:assembleRelease')
+                pluginApks {
+                    pluginApk1 {
+                        businessName = 'plugin2-app'
+                        partKey = 'plugin2-app'
+                        buildTask = ':plugin2:assembleRelease'
+                        apkName = 'plugin2-release.apk'
+                        apkPath = 'plugin2/build/outputs/apk/debug/plugin2-release.apk'
+                        hostWhiteList = []
+                    }
+                }
+            }
+        }
+        loaderApkProjectPath = 'plugin-loader'
+        runtimeApkProjectPath = 'plugin-runtime'
+        uuid = '012345678901'
+        version = 1
+        compactVersion = [1, 2, 3]
+        uuidNickName = "1.1.1"
+    }
+}
