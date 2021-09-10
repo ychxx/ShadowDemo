@@ -1,11 +1,10 @@
 package com.yc.plugin2
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.yc.jetpacklib.base.YcBaseActivityPlus
+import com.yc.plugin2.databinding.ActivityPlugin2Binding
 
-class Plugin2Activity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_plugin2)
+class Plugin2Activity : YcBaseActivityPlus<ActivityPlugin2Binding>(ActivityPlugin2Binding::inflate) {
+    override fun ActivityPlugin2Binding.initView() {
+
     }
 }
