@@ -7,11 +7,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 读电话号码-->
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" /> <!--拨打电话 -->
-
     <!-- 必须的权限： -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />  <!-- 设备信息 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络通信-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- apn信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- mac地址-->
@@ -66,7 +62,6 @@
 
     <uses-permission android:name="oicq.wlogin_sdk.permission.WloginProvider.READ" />
     <uses-permission android:name="oicq.wlogin_sdk.permission.WloginProvider.WRITE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".plugin.HostApplication"
@@ -104,38 +99,52 @@
         <service
             android:name=".plugin.Plugin2ProcessPPS"
             android:process=":plugin2" />
+
+        <activity
+            android:name="com.huawei.hms.hmsscankit.ScanKitActivity"
+            tools:node="remove" />
+        <service
+            android:name="com.huawei.agconnect.core.ServiceDiscovery"
+            tools:node="remove" />
+
+        <provider
+            android:name="com.huawei.agconnect.core.provider.AGConnectInitializeProvider"
+            android:authorities="${applicationId}.AGCInitializeProvider"
+            tools:node="remove" />
+        <provider
+            android:name="com.huawei.hms.mlsdk.common.provider.MLInitializerProvider"
+            android:authorities="${applicationId}.AGCInitializeProvider"
+            tools:node="remove" />
         <!--dynamic activity注册
           注意configChanges需要全注册
           theme需要注册成透明
           -->
         <activity
             android:name="com.hc.plugin.runtime.PluginDefaultProxyActivity"
-            android:launchMode="standard"
-            android:screenOrientation="portrait"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
             android:hardwareAccelerated="true"
-            android:theme="@style/troop_Transparent"
+            android:launchMode="standard"
             android:multiprocess="true"
-            />
+            android:screenOrientation="portrait"
+            android:theme="@style/troop_Transparent" />
 
         <activity
             android:name="com.hc.plugin.runtime.PluginSingleInstance1ProxyActivity"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
             android:hardwareAccelerated="true"
-            android:theme="@style/troop_Transparent"
+            android:launchMode="singleInstance"
             android:multiprocess="true"
-            />
+            android:screenOrientation="portrait"
+            android:theme="@style/troop_Transparent" />
 
         <activity
             android:name="com.hc.plugin.runtime.PluginSingleTask1ProxyActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
             android:hardwareAccelerated="true"
-            android:theme="@style/troop_Transparent"
+            android:launchMode="singleTask"
             android:multiprocess="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/troop_Transparent"
 
             />
         <!--dynamic activity注册 end -->

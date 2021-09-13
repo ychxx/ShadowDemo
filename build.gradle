@@ -16,6 +16,7 @@ buildscript {
     repositories {
         google()
         maven { url 'https://jitpack.io' }
+        maven {url 'https://developer.huawei.com/repo/'} //华为扫码
         mavenCentral()
     }
     dependencies {
@@ -26,6 +27,7 @@ buildscript {
         classpath 'com.tencent.shadow.core:gradle-plugin'//用于插件gradle里的shadow{ packagePlugin {pluginTypes {xxxx}}}
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'com.huawei.agconnect:agcp:1.2.0.300'//华为扫码
     }
 }
 
@@ -35,6 +37,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        maven {url 'https://developer.huawei.com/repo/'} //华为扫码
     }
 }
 apply from: 'buildScripts/gradle/common.gradle'
